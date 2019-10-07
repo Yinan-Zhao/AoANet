@@ -24,6 +24,7 @@ The json file has a dict that contains:
 """
 
 import os
+import sys
 import json
 import argparse
 from six.moves import cPickle
@@ -146,5 +147,7 @@ if __name__ == "__main__":
   parser.add_argument('--split', default='all', help='test, val, train, all')
   args = parser.parse_args()
   params = vars(args) # convert to ordinary dict
+
+  sys.path.append("/home/yz9244/AoANet/")
 
   main(params)
