@@ -37,7 +37,7 @@ for infile in infiles:
         reader = csv.DictReader(tsv_in_file, delimiter='\t', fieldnames = FIELDNAMES)
         count = 0
         for item in reader:
-            if count < 6593:
+            if count < 6592:
                 count += 1
                 continue
             item['image_id'] = int(item['image_id'])
