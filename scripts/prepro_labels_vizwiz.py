@@ -30,6 +30,7 @@ from __future__ import print_function
 import os
 import json
 import sys
+import re
 import argparse
 from random import shuffle, seed
 import string
