@@ -67,6 +67,7 @@ def load_caption_vocab(vocab_path=COCO_TRAIN_VOCAB_PATH):
   info = json.load(open(vocab_path))
   ix_to_word = info['ix_to_word']
   vocab = []
+  print(ix_to_word[0])
   for key, value in ix_to_word:
     vocab.append(value)
   return vocab
