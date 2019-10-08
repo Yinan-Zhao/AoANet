@@ -259,8 +259,8 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser()
 
   # input json
-  parser.add_argument('--output_json', default='vizwiztalk', help='output json file')
-  parser.add_argument('--output_h5', default='vizwiztalk', help='output h5 file')
+  parser.add_argument('--output_json', default='data/vizwiztalk', help='output json file')
+  parser.add_argument('--output_h5', default='data/vizwiztalk', help='output h5 file')
   parser.add_argument('--images_root', default='', help='root location in which images are stored, to be prepended to file_path in input json')
 
   # options
