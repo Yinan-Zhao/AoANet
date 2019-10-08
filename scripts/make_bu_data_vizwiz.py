@@ -27,9 +27,9 @@ infiles = ['VizWiz_resnet101_faster_rcnn_genome_trainval.tsv.2', \
           'VizWiz_resnet101_faster_rcnn_genome_trainval.tsv.3', \
           'VizWiz_resnet101_faster_rcnn_genome_test.tsv.1']
 
-os.makedirs(args.output_dir+'_att')
-os.makedirs(args.output_dir+'_fc')
-os.makedirs(args.output_dir+'_box')
+#os.makedirs(args.output_dir+'_att')
+#os.makedirs(args.output_dir+'_fc')
+#os.makedirs(args.output_dir+'_box')
 
 for infile in infiles:
     print('Reading ' + infile)
@@ -37,6 +37,9 @@ for infile in infiles:
         reader = csv.DictReader(tsv_in_file, delimiter='\t', fieldnames = FIELDNAMES)
         count = 0
         for item in reader:
+            if count < 6591:
+                count += 1
+                continue
             item['image_id'] = int(item['image_id'])
             item['num_boxes'] = int(item['num_boxes'])
             print("num boxes: %d" % (item['num_boxes']))
