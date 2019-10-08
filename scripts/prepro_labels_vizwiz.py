@@ -23,6 +23,8 @@ The json file has a dict that contains:
   such as in particular the 'split' it was assigned to.
 """
 
+### source activate py2.7 ###
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
