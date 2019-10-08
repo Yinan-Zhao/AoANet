@@ -23,8 +23,8 @@ csv.field_size_limit(sys.maxsize)
 
 
 FIELDNAMES = ['image_id', 'image_w','image_h','num_boxes', 'boxes', 'features']
-infiles = ['VizWiz_resnet101_faster_rcnn_genome_trainval.tsv.2',
-          'VizWiz_resnet101_faster_rcnn_genome_trainval.tsv.3',\
+infiles = ['VizWiz_resnet101_faster_rcnn_genome_trainval.tsv.2', \
+          'VizWiz_resnet101_faster_rcnn_genome_trainval.tsv.3', \
           'VizWiz_resnet101_faster_rcnn_genome_test.tsv.1']
 
 os.makedirs(args.output_dir+'_att')
