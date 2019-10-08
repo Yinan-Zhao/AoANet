@@ -45,6 +45,8 @@ from pycocotools.coco import COCO
 VizWiz_ANN_PATH = '/home/yz9244/Up-Down-Captioner/bottom-up-attention/data/VizWiz/annotations/'
 COCO_TRAIN_VOCAB_PATH = '/home/yz9244/AoANet/data/cocotalk.json'
 
+SENTENCE_SPLIT_REGEX = re.compile(r'(\W+)') # Split on any non-alphanumeric character
+
 def split_sentence(sentence):
   """ break sentence into a list of words and punctuation """
   toks = []
