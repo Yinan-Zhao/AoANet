@@ -37,16 +37,14 @@ for infile in infiles:
         reader = csv.DictReader(tsv_in_file, delimiter='\t', fieldnames = FIELDNAMES)
         count = 0
         for item in reader:
-            if count < 6592:
+            if count < 6590:
                 count += 1
                 continue
             item['image_id'] = int(item['image_id'])
             item['num_boxes'] = int(item['num_boxes'])
             print("num boxes: %d" % (item['num_boxes']))
-            print(np.frombuffer(base64.b64decode(item['boxes']+"==="), 
-                        dtype=np.float32).shape)
-            #print(base64.decodestring(item['features']+"==="))
-            print(len(base64.b64decode(item['features']+"===")))
+            #print(np.frombuffer(base64.b64decode(item['boxes']+"==="),dtype=np.float32).shape)
+            #print(len(base64.b64decode(item['features']+"===")))
             print(np.frombuffer(base64.decodestring(item['features']+"==="), dtype=np.float32).shape)
             for field in ['boxes', 'features']:
                 item[field] = np.frombuffer(base64.decodestring(item[field]+"==="), 
