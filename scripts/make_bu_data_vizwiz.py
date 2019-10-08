@@ -40,7 +40,9 @@ for infile in infiles:
             item['image_id'] = int(item['image_id'])
             item['num_boxes'] = int(item['num_boxes'])
             print("num boxes: %d" % (item['num_boxes']))
-            print(np.frombuffer(base64.decodestring(item[field]+"==="), 
+            print(np.frombuffer(base64.decodestring(item['num_boxes']+"==="), 
+                        dtype=np.float32).shape)
+            print(np.frombuffer(base64.decodestring(item['features']+"==="), 
                         dtype=np.float32).shape)
             for field in ['boxes', 'features']:
                 item[field] = np.frombuffer(base64.decodestring(item[field]+"==="), 
