@@ -151,7 +151,7 @@ def encode_captions(params, data_split, wtoi):
   img_count = 0
   caption_count = 0
   for dataset in data_split:
-    annFile='%s/VizWiz_Captions_v1_%s.json' % (COCO_ANN_PATH, dataset)
+    annFile='%s/VizWiz_Captions_v1_%s.json' % (VizWiz_ANN_PATH, dataset)
     coco = COCO(annFile)
     for image_id,anns in coco.imgToAnns.iteritems():
       img_count += 1
@@ -169,7 +169,7 @@ def encode_captions(params, data_split, wtoi):
   imgInfo = []
   
   for dataset in data_split:
-    annFile='%s/VizWiz_Captions_v1_%s.json' % (COCO_ANN_PATH, dataset)
+    annFile='%s/VizWiz_Captions_v1_%s.json' % (VizWiz_ANN_PATH, dataset)
     coco = COCO(annFile)
     for image_id,anns in coco.imgToAnns.iteritems():
       image_info = coco.imgs[image_id]
