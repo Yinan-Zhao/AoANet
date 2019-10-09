@@ -48,6 +48,8 @@ from pycocotools.coco import COCO
 VizWiz_ANN_PATH = '/home/yz9244/Up-Down-Captioner/bottom-up-attention/data/VizWiz/annotations/'
 COCO_TRAIN_VOCAB_PATH = '/home/yz9244/AoANet/data/cocotalk.json'
 
+corrupt_list = [37093]
+
 SENTENCE_SPLIT_REGEX = re.compile(r'(\W+)') # Split on any non-alphanumeric character
 
 def split_sentence(sentence):
@@ -83,6 +85,8 @@ def build_vocab(params, data_split, base_vocab=None):
     coco = COCO(annFile)
     # Count word frequencies
     for image_id,anns in coco.imgToAnns.iteritems():
+      if image_id in corrupt_list:
+        continue
       for ann in anns:
         caption_sequence = split_sentence(ann['caption'])
         for word in caption_sequence:
@@ -111,6 +115,8 @@ def build_vocab(params, data_split, base_vocab=None):
     coco = COCO(annFile)
     # Count word frequencies
     for image_id,anns in coco.imgToAnns.iteritems():
+      if image_id in corrupt_list:
+        continue
       for ann in anns:
         caption_sequence = split_sentence(ann['caption'])
         nw = len(caption_sequence)
@@ -157,6 +163,8 @@ def encode_captions(params, data_split, wtoi):
     annFile='%s/VizWiz_Captions_v1_%s.json' % (VizWiz_ANN_PATH, dataset)
     coco = COCO(annFile)
     for image_id,anns in coco.imgToAnns.iteritems():
+      if image_id in corrupt_list:
+        continue
       img_count += 1
       caption_count += len(anns)
   N = img_count
@@ -175,6 +183,8 @@ def encode_captions(params, data_split, wtoi):
     annFile='%s/VizWiz_Captions_v1_%s.json' % (VizWiz_ANN_PATH, dataset)
     coco = COCO(annFile)
     for image_id,anns in coco.imgToAnns.iteritems():
+      if image_id in corrupt_list:
+        continue
       image_info = coco.imgs[image_id]
       #image_path = '%s/%s' % (image_info['file_name'].split('_')[1], image_info['file_name'])
       image_path = '%s' % (image_info['file_name'])
