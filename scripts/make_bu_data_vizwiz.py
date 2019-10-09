@@ -27,32 +27,27 @@ infiles = ['VizWiz_resnet101_faster_rcnn_genome_trainval.tsv.2', \
           'VizWiz_resnet101_faster_rcnn_genome_trainval.tsv.3', \
           'VizWiz_resnet101_faster_rcnn_genome_test.tsv.1']
 
-#os.makedirs(args.output_dir+'_att')
-#os.makedirs(args.output_dir+'_fc')
-#os.makedirs(args.output_dir+'_box')
+os.makedirs(args.output_dir+'_att')
+os.makedirs(args.output_dir+'_fc')
+os.makedirs(args.output_dir+'_box')
 
 for infile in infiles:
     print('Reading ' + infile)
     with open(os.path.join('/home/yz9244/Up-Down-Captioner/bottom-up-attention/tsv/', infile), "r+b") as tsv_in_file:
         reader = csv.DictReader(tsv_in_file, delimiter='\t', fieldnames = FIELDNAMES)
-        count = 0
         for item in reader:
-            if count < 6590:
-                count += 1
-                continue
             item['image_id'] = int(item['image_id'])
             item['num_boxes'] = int(item['num_boxes'])
-            print("num boxes: %d" % (item['num_boxes']))
+            #print("num boxes: %d" % (item['num_boxes']))
             #print(np.frombuffer(base64.b64decode(item['boxes']+"==="),dtype=np.float32).shape)
-            print(len(base64.b64decode(item['features']+"===")))
-            print(np.frombuffer(base64.decodestring(item['features']+"==="), dtype=np.float32).shape)
+            #print(len(base64.b64decode(item['features']+"===")))
+            #print(np.frombuffer(base64.decodestring(item['features']+"==="), dtype=np.float32).shape)
             for field in ['boxes', 'features']:
-                item[field] = np.frombuffer(base64.decodestring(item[field]+"==="), 
+                item[field] = np.frombuffer(base64.decodestring(item[field]), 
                         dtype=np.float32).reshape((item['num_boxes'],-1))
             np.savez_compressed(os.path.join(args.output_dir+'_att', str(item['image_id'])), feat=item['features'])
             np.save(os.path.join(args.output_dir+'_fc', str(item['image_id'])), item['features'].mean(0))
             np.save(os.path.join(args.output_dir+'_box', str(item['image_id'])), item['boxes'])
-            count += 1
 
 
 
