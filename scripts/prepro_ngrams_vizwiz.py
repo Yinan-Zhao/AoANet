@@ -126,25 +126,25 @@ def build_dict(wtoi, params):
   refs_words = []
   refs_idxs = []
 
-  dataset = params['split']
-  annFile='%s/VizWiz_Captions_v1_%s.json' % (VizWiz_ANN_PATH, dataset)
-  coco = COCO(annFile)
-  for image_id,anns in coco.imgToAnns.iteritems():
-    if image_id in corrupt_list:
-      continue
-    ref_words = []
-    ref_idxs = []
-    for j, ann in enumerate(anns):
-      caption_sequence = split_sentence(ann['caption'])
-      if hasattr(params, 'bpe'):
-        caption_sequence = params.bpe.segment(' '.join(caption_sequence)).strip().split(' ')
-      tmp_tokens = caption_sequence + ['<eos>']
-      tmp_tokens = [_ if _ in wtoi else 'UNK' for _ in tmp_tokens]
-      ref_words.append(' '.join(tmp_tokens))
-      ref_idxs.append(' '.join([str(wtoi[_]) for _ in tmp_tokens]))
-    refs_words.append(ref_words)
-    refs_idxs.append(ref_idxs)
-    count_imgs += 1
+  for dataset in params['split']:
+    annFile='%s/VizWiz_Captions_v1_%s.json' % (VizWiz_ANN_PATH, dataset)
+    coco = COCO(annFile)
+    for image_id,anns in coco.imgToAnns.iteritems():
+      if image_id in corrupt_list:
+        continue
+      ref_words = []
+      ref_idxs = []
+      for j, ann in enumerate(anns):
+        caption_sequence = split_sentence(ann['caption'])
+        if hasattr(params, 'bpe'):
+          caption_sequence = params.bpe.segment(' '.join(caption_sequence)).strip().split(' ')
+        tmp_tokens = caption_sequence + ['<eos>']
+        tmp_tokens = [_ if _ in wtoi else 'UNK' for _ in tmp_tokens]
+        ref_words.append(' '.join(tmp_tokens))
+        ref_idxs.append(' '.join([str(wtoi[_]) for _ in tmp_tokens]))
+      refs_words.append(ref_words)
+      refs_idxs.append(ref_idxs)
+      count_imgs += 1
   print('total imgs:', count_imgs)
 
   ngram_words = compute_doc_freq(create_crefs(refs_words))
@@ -180,10 +180,11 @@ if __name__ == "__main__":
 
   parser.add_argument('--dict_json', default='data/vizwiztalk.json', help='output json file')
   parser.add_argument('--output_pkl', default='data/vizwiz-train', help='output pickle file')
-  parser.add_argument('--split', default='train', help='test, val, train, all')
+  parser.add_argument('--split', default='all', help='test, val, train, all')
   args = parser.parse_args()
   params = vars(args) # convert to ordinary dict
 
   sys.path.append("/home/yz9244/AoANet/")
+  params['split'] = ['train', 'val']
 
   main(params)
