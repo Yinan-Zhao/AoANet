@@ -27,8 +27,8 @@ import os
 import sys
 import json
 import argparse
+import six
 from six.moves import cPickle
-import misc.utils as utils
 from collections import defaultdict
 
 sys.path.append('/home/yz9244/Up-Down-Captioner/external/coco/PythonAPI/')
@@ -37,6 +37,18 @@ from pycocotools.coco import COCO
 VizWiz_ANN_PATH = '/home/yz9244/Up-Down-Captioner/bottom-up-attention/data/VizWiz/annotations/'
 
 corrupt_list = [37093]
+
+def pickle_dump(obj, f):
+    """ Dump a pickle.
+    Parameters
+    ----------
+    obj: pickled object
+    f: file-like object
+    """
+    if six.PY3:
+        return cPickle.dump(obj, f, protocol=2)
+    else:
+        return cPickle.dump(obj, f)
 
 def split_sentence(sentence):
   """ break sentence into a list of words and punctuation """
@@ -154,8 +166,8 @@ def main(params):
 
   ngram_words, ngram_idxs, ref_len = build_dict(wtoi, params)
 
-  utils.pickle_dump({'document_frequency': ngram_words, 'ref_len': ref_len}, open(params['output_pkl']+'-words.p','wb'))
-  utils.pickle_dump({'document_frequency': ngram_idxs, 'ref_len': ref_len}, open(params['output_pkl']+'-idxs.p','wb'))
+  pickle_dump({'document_frequency': ngram_words, 'ref_len': ref_len}, open(params['output_pkl']+'-words.p','wb'))
+  pickle_dump({'document_frequency': ngram_idxs, 'ref_len': ref_len}, open(params['output_pkl']+'-idxs.p','wb'))
 
 if __name__ == "__main__":
 
