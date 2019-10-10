@@ -27,6 +27,8 @@ parser.add_argument('--cnn_model', type=str,  default='resnet101',
                 help='resnet101, resnet152')
 parser.add_argument('--infos_path', type=str, default='',
                 help='path to infos to evaluate')
+parser.add_argument('--output_file', type=str, default='',
+                help='output file name')
 opts.add_eval_options(parser)
 
 opt = parser.parse_args()
@@ -81,4 +83,4 @@ if lang_stats:
 
 if opt.dump_json == 1:
     # dump the json
-    json.dump(split_predictions, open('vis/vis.json', 'w'))
+    json.dump(split_predictions, open('vis/'+args.output_file, 'w'))

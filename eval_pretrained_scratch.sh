@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=1 python eval.py --model log/log_aoanet_vizwiz/model-78000.pth --infos_path log/log_aoanet_vizwiz/infos_aoanet_vizwiz-78000.pkl  --dump_images 0 --dump_json 1 --num_images -1 --language_eval 0 --beam_size 2 --batch_size 100 --split test --output_file VizWiz_scratch_78000.json
