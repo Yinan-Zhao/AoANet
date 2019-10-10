@@ -223,7 +223,7 @@ def train(opt):
                     dp_model, lw_model.crit, loader, eval_kwargs)
 
                 if opt.reduce_on_plateau:
-                    if 'CIDEr' in lang_stats:
+                    if lang_stats is not None and 'CIDEr' in lang_stats:
                         optimizer.scheduler_step(-lang_stats['CIDEr'])
                     else:
                         optimizer.scheduler_step(val_loss)

@@ -65,7 +65,7 @@ python train_vizwiz.py --id $id \
     --num_layers 2 \
     --input_encoding_size 1024 \
     --rnn_size 1024 \
-    --language_eval 1 \
+    --language_eval 0 \
     --val_images_use -1 \
     --save_checkpoint_every 3000 \
     --save_history_ckpt 1 \
