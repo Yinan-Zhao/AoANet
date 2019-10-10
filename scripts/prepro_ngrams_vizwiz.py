@@ -136,7 +136,8 @@ def build_dict(wtoi, params):
     ref_idxs = []
     for j, ann in enumerate(anns):
       caption_sequence = split_sentence(ann['caption'])
-      caption_sequence = params.bpe.segment(' '.join(caption_sequence)).strip().split(' ')
+      if hasattr(params, 'bpe'):
+        caption_sequence = params.bpe.segment(' '.join(caption_sequence)).strip().split(' ')
       tmp_tokens = caption_sequence + ['<eos>']
       tmp_tokens = [_ if _ in wtoi else 'UNK' for _ in tmp_tokens]
       ref_words.append(' '.join(tmp_tokens))
