@@ -28,6 +28,7 @@ import re
 import sys
 import json
 import argparse
+import string
 import six
 from six.moves import cPickle
 from collections import defaultdict
