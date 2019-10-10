@@ -4,7 +4,7 @@ start_from=""
 else
 start_from="--start_from log/log_$id"
 fi
-python train_vizwiz.py --id $id \
+'''python train_vizwiz.py --id $id \
     --caption_model aoa \
     --refine 1 \
     --refine_aoa 1 \
@@ -40,7 +40,7 @@ python train_vizwiz.py --id $id \
     --max_epochs 25 \
     --scheduled_sampling_increase_every 5 \
     --scheduled_sampling_max_prob 0.5 \
-    --learning_rate_decay_every 3
+    --learning_rate_decay_every 3'''
 
 python train_vizwiz.py --id $id \
     --caption_model aoa \
@@ -76,4 +76,5 @@ python train_vizwiz.py --id $id \
     --self_critical_after 0 \
     --learning_rate_decay_start -1 \
     --scheduled_sampling_start -1 \
-    --reduce_on_plateau 
+    --reduce_on_plateau \
+    --cached_tokens vizwiz-train-idxs
