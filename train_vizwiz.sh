@@ -67,7 +67,7 @@ python train_vizwiz.py --id $id \
     --rnn_size 1024 \
     --language_eval 0 \
     --val_images_use -1 \
-    --save_checkpoint_every 3000 \
+    --save_checkpoint_every 10 \
     --save_history_ckpt 1 \
     --start_from log/log_$id \
     --checkpoint_path log/log_$id"_rl" \
