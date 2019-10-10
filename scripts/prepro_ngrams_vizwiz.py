@@ -24,6 +24,7 @@ The json file has a dict that contains:
 """
 
 import os
+import re
 import sys
 import json
 import argparse
@@ -37,6 +38,8 @@ from pycocotools.coco import COCO
 VizWiz_ANN_PATH = '/home/yz9244/Up-Down-Captioner/bottom-up-attention/data/VizWiz/annotations/'
 
 corrupt_list = [37093]
+
+SENTENCE_SPLIT_REGEX = re.compile(r'(\W+)') # Split on any non-alphanumeric character
 
 def pickle_dump(obj, f):
     """ Dump a pickle.
