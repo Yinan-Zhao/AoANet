@@ -32,7 +32,7 @@ python finetune_vizwiz.py --id $id \
     --learning_rate_decay_start 0 \
     --scheduled_sampling_start 0 \
     --checkpoint_path log/log_$id  \
-    --start_from log/log_aoanet_rl \
+    $start_from \
     --save_checkpoint_every 6000 \
     --save_history_ckpt 1 \
     --language_eval 0 \
