@@ -4,7 +4,7 @@ start_from=""
 else
 start_from="--start_from log/log_$id"
 fi
-python train_vizwiz.py --id $id \
+python finetune_vizwiz.py --id $id \
     --caption_model aoa \
     --refine 1 \
     --refine_aoa 1 \
