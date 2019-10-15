@@ -42,7 +42,7 @@ python finetune_vizwiz.py --id $id \
     --scheduled_sampling_max_prob 0.5 \
     --learning_rate_decay_every 3
 
-'''python train_vizwiz.py --id $id \
+python train_vizwiz.py --id $id \
     --caption_model aoa \
     --refine 1 \
     --refine_aoa 1 \
@@ -54,8 +54,8 @@ python finetune_vizwiz.py --id $id \
     --mean_feats 1 \
     --ctx_drop 1 \
     --dropout_aoa 0.3 \
-    --input_json data/vizwiztalk.json \
-    --input_label_h5 data/vizwiztalk_label.h5 \
+    --input_json data/vizwiztalk_withCOCO.json \
+    --input_label_h5 data/vizwiztalk_withCOCO_label.h5 \
     --input_fc_dir  data/vizwizbu_fc \
     --input_att_dir  data/vizwizbu_att  \
     --input_box_dir  data/vizwizbu_box \
@@ -77,4 +77,4 @@ python finetune_vizwiz.py --id $id \
     --learning_rate_decay_start -1 \
     --scheduled_sampling_start -1 \
     --reduce_on_plateau \
-    --cached_tokens vizwiz-train-idxs'''
+    --cached_tokens vizwiz-train-withCOCO-idxs
