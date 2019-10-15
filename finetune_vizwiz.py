@@ -31,7 +31,7 @@ except ImportError:
 def load_para(model, ckpt_file, load_to_cpu=True):
     map_location = (lambda storage, loc: storage) if load_to_cpu else None
     ckpt = torch.load(ckpt_file, map_location=map_location) # The model and optimizer is loaded from the saved file
-    para_dict = ckpt['state_dicts'][0] # Get the state dict
+    para_dict = ckpt # Get the state dict
 
     for n,p in model.state_dict().items(): 
         ip = para_dict[n] # Get the parameters with selected layer name from save file
