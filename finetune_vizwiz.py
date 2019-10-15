@@ -28,6 +28,21 @@ except ImportError:
     print("tensorboardX is not installed")
     tb = None
 
+def load_para(model, ckpt_file, load_to_cpu=True):
+    map_location = (lambda storage, loc: storage) if load_to_cpu else None
+    ckpt = torch.load(ckpt_file, map_location=map_location) # The model and optimizer is loaded from the saved file
+    para_dict = ckpt['state_dicts'][0] # Get the state dict
+
+    for n,p in model.state_dict().items(): 
+        ip = para_dict[n] # Get the parameters with selected layer name from save file
+        if p.shape == ip.shape: 
+            p.data.copy_(ip.data) # Copy the data of parameters
+        else:
+            print('{} -shape {} ,{}'.format(n, (p.shape), (ip.shape))) 
+            p.data[:10370].copy_(ip.data)
+    return model
+    
+
 def add_summary_value(writer, key, value, iteration):
     if writer:
         writer.add_scalar(key, value, iteration)
@@ -82,7 +97,7 @@ def train(opt):
 
     opt.vocab = loader.get_vocab()
     model = models.setup(opt)
-    model.load_state_dict(torch.load(os.path.join('/home/yz9244/AoANet/log/log_aoanet_rl', 'model.pth')))
+    model = load_para(model, os.path.join('/home/yz9244/AoANet/log/log_aoanet_rl', 'model.pth'))
     model = model.cuda()
     del opt.vocab
     dp_model = torch.nn.DataParallel(model)
