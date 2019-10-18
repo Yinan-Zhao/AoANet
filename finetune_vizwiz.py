@@ -97,7 +97,7 @@ def train(opt):
 
     opt.vocab = loader.get_vocab()
     model = models.setup(opt)
-    model = load_para(model, os.path.join('/home/yz9244/AoANet/log/log_aoanet', 'model.pth'))
+    model = load_para(model, os.path.join('/home/yz9244/AoANet/log/log_aoanet_rl', 'model.pth'))
     model = model.cuda()
     del opt.vocab
     dp_model = torch.nn.DataParallel(model)
