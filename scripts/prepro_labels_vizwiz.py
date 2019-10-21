@@ -46,7 +46,7 @@ sys.path.append('/home/yz9244/Up-Down-Captioner/external/coco/PythonAPI/')
 from pycocotools.coco import COCO
 
 VizWiz_ANN_PATH = '/home/yz9244/Up-Down-Captioner/bottom-up-attention/data/VizWiz/annotations/'
-COCO_TRAIN_VOCAB_PATH = '/home/yz9244/AoANet/data/cocotalk.json'
+COCO_TRAIN_VOCAB_PATH = '/home/yz9244/AoANet/data/cocotalk_vocab.json'
 
 corrupt_list = [37093]
 
