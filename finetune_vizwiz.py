@@ -39,7 +39,8 @@ def load_para(model, ckpt_file, load_to_cpu=True):
             p.data.copy_(ip.data) # Copy the data of parameters
         else:
             print('{} -shape {} ,{}'.format(n, (p.shape), (ip.shape))) 
-            p.data[:10370].copy_(ip.data)
+            p.data[:10369].copy_(ip.data[:10369])
+            p.data[-1].copy_(ip.data[-1])
     return model
     
 
