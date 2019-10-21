@@ -11,8 +11,8 @@ import os
 
 import misc.utils as utils
 
-with open(os.path.join('/home/yz9244/AoANet/log_aoanet_rl', 'infos_'+'aoanet'+'.pkl'), 'rb') as f:
+with open(os.path.join('/home/yz9244/AoANet/log/log_aoanet_rl', 'infos_'+'aoanet'+'.pkl'), 'rb') as f:
     infos = utils.pickle_load(f)
-    
+
 
 
