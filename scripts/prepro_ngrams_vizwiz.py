@@ -38,7 +38,8 @@ from pycocotools.coco import COCO
 
 VizWiz_ANN_PATH = '/home/yz9244/Up-Down-Captioner/bottom-up-attention/data/VizWiz/annotations/'
 
-corrupt_list = [37093]
+#corrupt_list = [37093]
+corrupt_list = []
 
 SENTENCE_SPLIT_REGEX = re.compile(r'(\W+)') # Split on any non-alphanumeric character
 
