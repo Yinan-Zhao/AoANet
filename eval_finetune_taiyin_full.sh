@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python eval.py --model log/log_aoanet_vizwiz_finetune_taiyin_full_rl/model.pth --infos_path log/log_aoanet_vizwiz_finetune_taiyin_full_rl/infos_aoanet_vizwiz_finetune_taiyin_full.pkl  --dump_images 0 --dump_json 1 --num_images -1 --language_eval 0 --beam_size 2 --batch_size 100 --split test --output_file VizWiz_finetune_taiyin_full_rl.json
