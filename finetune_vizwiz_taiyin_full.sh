@@ -1,10 +1,10 @@
-id="aoanet_vizwiz_taiyin_full"
+id="aoanet_vizwiz_finetune_taiyin_full"
 if [ ! -f log/log_$id/infos_$id.pkl ]; then
 start_from=""
 else
 start_from="--start_from log/log_$id"
 fi
-python train_vizwiz.py --id $id \
+python finetune_vizwiz.py --id $id \
     --caption_model aoa \
     --refine 1 \
     --refine_aoa 1 \
@@ -17,11 +17,11 @@ python train_vizwiz.py --id $id \
     --ctx_drop 1 \
     --dropout_aoa 0.3 \
     --label_smoothing 0.2 \
-    --input_json data/vizwiztalk_taiyin_full.json \
-    --input_label_h5 data/vizwiztalk_taiyin_full_label.h5 \
-    --input_fc_dir  data/vizwizbu_fc \
-    --input_att_dir  data/vizwizbu_att  \
-    --input_box_dir  data/vizwizbu_box \
+    --input_json data/vizwiztalk_taiyin_full_withCOCO.json \
+    --input_label_h5 data/vizwiztalk_taiyin_full_withCOCO_label.h5 \
+    --input_fc_dir  data/vizwizbu_taiyin_full_fc \
+    --input_att_dir  data/vizwizbu_taiyin_full_att  \
+    --input_box_dir  data/vizwizbu_taiyin_full_box \
     --seq_per_img 5 \
     --batch_size 10 \
     --beam_size 1 \
@@ -33,7 +33,7 @@ python train_vizwiz.py --id $id \
     --scheduled_sampling_start 0 \
     --checkpoint_path log/log_$id  \
     $start_from \
-    --save_checkpoint_every 3000 \
+    --save_checkpoint_every 6000 \
     --save_history_ckpt 1 \
     --language_eval 0 \
     --val_images_use -1 \
@@ -54,11 +54,11 @@ python train_vizwiz.py --id $id \
     --mean_feats 1 \
     --ctx_drop 1 \
     --dropout_aoa 0.3 \
-    --input_json data/vizwiztalk_taiyin_full.json \
-    --input_label_h5 data/vizwiztalk_taiyin_full_label.h5 \
-    --input_fc_dir  data/vizwizbu_fc \
-    --input_att_dir  data/vizwizbu_att  \
-    --input_box_dir  data/vizwizbu_box \
+    --input_json data/vizwiztalk_taiyin_full_withCOCO.json \
+    --input_label_h5 data/vizwiztalk_taiyin_full_withCOCO_label.h5 \
+    --input_fc_dir  data/vizwizbu_taiyin_full_fc \
+    --input_att_dir  data/vizwizbu_taiyin_full_att  \
+    --input_box_dir  data/vizwizbu_taiyin_full_box \
     --seq_per_img 5 \
     --batch_size 10 \
     --beam_size 1 \
@@ -77,4 +77,4 @@ python train_vizwiz.py --id $id \
     --learning_rate_decay_start -1 \
     --scheduled_sampling_start -1 \
     --reduce_on_plateau \
-    --cached_tokens vizwiz-train-taiyin-full-idxs
+    --cached_tokens vizwiz-train-taiyin-full-withCOCO-idxs

@@ -19,9 +19,9 @@ python train_vizwiz.py --id $id \
     --label_smoothing 0.2 \
     --input_json data/vizwiztalk_taiyin_full.json \
     --input_label_h5 data/vizwiztalk_taiyin_full_label.h5 \
-    --input_fc_dir  data/vizwizbu_fc \
-    --input_att_dir  data/vizwizbu_att  \
-    --input_box_dir  data/vizwizbu_box \
+    --input_fc_dir  data/vizwizbu_taiyin_full_fc \
+    --input_att_dir  data/vizwizbu_taiyin_full_att  \
+    --input_box_dir  data/vizwizbu_taiyin_full_box \
     --seq_per_img 5 \
     --batch_size 10 \
     --beam_size 1 \
@@ -56,9 +56,9 @@ python train_vizwiz.py --id $id \
     --dropout_aoa 0.3 \
     --input_json data/vizwiztalk_taiyin_full.json \
     --input_label_h5 data/vizwiztalk_taiyin_full_label.h5 \
-    --input_fc_dir  data/vizwizbu_fc \
-    --input_att_dir  data/vizwizbu_att  \
-    --input_box_dir  data/vizwizbu_box \
+    --input_fc_dir  data/vizwizbu_taiyin_full_fc \
+    --input_att_dir  data/vizwizbu_taiyin_full_att  \
+    --input_box_dir  data/vizwizbu_taiyin_full_box \
     --seq_per_img 5 \
     --batch_size 10 \
     --beam_size 1 \
