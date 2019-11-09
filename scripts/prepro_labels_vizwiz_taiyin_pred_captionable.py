@@ -46,7 +46,8 @@ sys.path.append('/home/yz9244/Up-Down-Captioner/external/coco/PythonAPI/')
 from pycocotools.coco import COCO
 
 VizWiz_ANN_PATH = '/home/yz9244/Up-Down-Captioner/bottom-up-attention/data/VizWiz/annotations_taiyin_pred_captionable/'
-COCO_TRAIN_VOCAB_PATH = '/home/yz9244/AoANet/data/cocotalk_vocab.json'
+COCO_TRAIN_VOCAB_PATH = '/home/yz9244/AoANet/data/vizwiztalk_taiyin_full_withCOCO.json'
+VIZWIZ_TAIYIN_FULL_VOCAB_PATH = '/home/yz9244/AoANet/data/vizwiztalk_taiyin_full.json'
 
 corrupt_list = [37093]
 
@@ -226,7 +227,7 @@ def main(params):
   seed(123) # make reproducible
   
   # create the vocab
-  vocab = build_vocab(params, ['train', 'val'])
+  vocab = build_vocab(params, ['train', 'val'], base_vocab=VIZWIZ_TAIYIN_FULL_VOCAB_PATH)
   itow = {i+1:w for i,w in enumerate(vocab)} # a 1-indexed vocab translation table
   wtoi = {w:i+1 for i,w in enumerate(vocab)} # inverse table 
   # encode captions in large arrays, ready to ship to hdf5 file
@@ -271,8 +272,8 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser()
 
   # input json
-  parser.add_argument('--output_json', default='data/vizwiztalk_taiyin_pred_captionable', help='output json file')
-  parser.add_argument('--output_h5', default='data/vizwiztalk_taiyin_pred_captionable', help='output h5 file')
+  parser.add_argument('--output_json', default='data/vizwiztalk_taiyin_full', help='output json file')
+  parser.add_argument('--output_h5', default='data/vizwiztalk_taiyin_full', help='output h5 file')
   parser.add_argument('--images_root', default='', help='root location in which images are stored, to be prepended to file_path in input json')
 
   # options
