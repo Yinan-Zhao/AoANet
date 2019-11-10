@@ -1,4 +1,4 @@
-id="aoanet_vizwiz_taiyin_pred_captionable_epoch20"
+id="aoanet_vizwiz_taiyin_sample_captionable_epoch20"
 if [ ! -f log/log_$id/infos_$id.pkl ]; then
 start_from=""
 else
@@ -17,8 +17,8 @@ python train_vizwiz.py --id $id \
     --ctx_drop 1 \
     --dropout_aoa 0.3 \
     --label_smoothing 0.2 \
-    --input_json data/vizwiztalk_taiyin_pred_captionable.json \
-    --input_label_h5 data/vizwiztalk_taiyin_pred_captionable_label.h5 \
+    --input_json data/vizwiztalk_taiyin_sample_captionable.json \
+    --input_label_h5 data/vizwiztalk_taiyin_sample_captionable_label.h5 \
     --input_fc_dir  data/vizwizbu_taiyin_full_fc \
     --input_att_dir  data/vizwizbu_taiyin_full_att  \
     --input_box_dir  data/vizwizbu_taiyin_full_box \
@@ -54,8 +54,8 @@ python train_vizwiz.py --id $id \
     --mean_feats 1 \
     --ctx_drop 1 \
     --dropout_aoa 0.3 \
-    --input_json data/vizwiztalk_taiyin_pred_captionable.json \
-    --input_label_h5 data/vizwiztalk_taiyin_pred_captionable_label.h5 \
+    --input_json data/vizwiztalk_taiyin_sample_captionable.json \
+    --input_label_h5 data/vizwiztalk_taiyin_sample_captionable_label.h5 \
     --input_fc_dir  data/vizwizbu_taiyin_full_fc \
     --input_att_dir  data/vizwizbu_taiyin_full_att  \
     --input_box_dir  data/vizwizbu_taiyin_full_box \
@@ -77,4 +77,4 @@ python train_vizwiz.py --id $id \
     --learning_rate_decay_start -1 \
     --scheduled_sampling_start -1 \
     --reduce_on_plateau \
-    --cached_tokens vizwiz-train-taiyin-pred-captionable-idxs
+    --cached_tokens vizwiz-train-taiyin-sample-captionable-idxs
