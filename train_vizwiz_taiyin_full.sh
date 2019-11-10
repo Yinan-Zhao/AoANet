@@ -37,7 +37,7 @@ python train_vizwiz.py --id $id \
     --save_history_ckpt 1 \
     --language_eval 0 \
     --val_images_use -1 \
-    --max_epochs 25 \
+    --max_epochs 2 \
     --scheduled_sampling_increase_every 5 \
     --scheduled_sampling_max_prob 0.5 \
     --learning_rate_decay_every 3
