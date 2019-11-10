@@ -217,7 +217,8 @@ def train(opt):
             if (iteration % opt.save_checkpoint_every == 0):
                 # eval model
                 eval_kwargs = {'split': 'train',
-                                'dataset': opt.input_json}
+                                'dataset': opt.input_json,
+                                'num_images': 1}
                 eval_kwargs.update(vars(opt))
                 val_loss, predictions, lang_stats = eval_utils.eval_split(
                     dp_model, lw_model.crit, loader, eval_kwargs)
