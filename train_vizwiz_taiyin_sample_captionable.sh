@@ -33,11 +33,11 @@ python train_vizwiz.py --id $id \
     --scheduled_sampling_start 0 \
     --checkpoint_path log/log_$id  \
     $start_from \
-    --save_checkpoint_every 3000 \
+    --save_checkpoint_every 4600 \
     --save_history_ckpt 1 \
     --language_eval 0 \
     --val_images_use -1 \
-    --max_epochs 25 \
+    --max_epochs 26 \
     --scheduled_sampling_increase_every 5 \
     --scheduled_sampling_max_prob 0.5 \
     --learning_rate_decay_every 3
@@ -67,12 +67,12 @@ python train_vizwiz.py --id $id \
     --rnn_size 1024 \
     --language_eval 0 \
     --val_images_use -1 \
-    --save_checkpoint_every 3000 \
+    --save_checkpoint_every 4600 \
     --save_history_ckpt 1 \
     --start_from log/log_$id \
     --checkpoint_path log/log_$id"_rl" \
     --learning_rate 2e-5 \
-    --max_epochs 40 \
+    --max_epochs 41 \
     --self_critical_after 0 \
     --learning_rate_decay_start -1 \
     --scheduled_sampling_start -1 \
